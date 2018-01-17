@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "586943446401",
+    "firebase_url": "https://limitbreaker-1f425.firebaseio.com",
+    "project_id": "limitbreaker-1f425",
+    "storage_bucket": "limitbreaker-1f425.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586943446401:android:cb78ede13e28b5fd",
+        "android_client_info": {
+          "package_name": "goosetech.limitbreaker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586943446401-mus0rtp5dro0dphi6cvilqk85510qp3u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "goosetech.limitbreaker",
+            "certificate_hash": "584d5d0c32367b9da7b3c9d4e23e90a38ef4e4d2"
+          }
+        },
+        {
+          "client_id": "586943446401-r8qbhc1espm50v4n05cb3ti8j46nikar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWLbYcp5YUzi-x-6cPDQJG2B8wHe1lmj0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "586943446401-r8qbhc1espm50v4n05cb3ti8j46nikar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
