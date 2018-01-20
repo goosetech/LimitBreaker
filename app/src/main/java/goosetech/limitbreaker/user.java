@@ -4,6 +4,7 @@ import android.location.Location;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by marte on 1/15/2018.
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 
 public class user {
     //Helper class for device info
-    public static class deviceInfo{
+    public class deviceInfo{
         String type, id;
         boolean permissions;
         public deviceInfo(){
@@ -24,11 +25,21 @@ public class user {
             this.id=id;
             permissions=false;
         }
-        public String getType(){return type;}
-        public String getID(){return id;}
+        public String getType(){
+            return type;
+        }
+
+
+        public String getId() {
+            return id;
+        }
+
+        public boolean hasPermissions() {
+            return permissions;
+        }
     }
     final static String TAG="debugging_user";
-    String fullName, username,email,password, phoneNumber;
+    String fullName, username,email, phoneNumber;
     ArrayList<String> activityLog;
     ArrayList<Location> locationHistory;
     ArrayList<deviceInfo> devices;
@@ -37,44 +48,21 @@ public class user {
         fullName ="Molten Cocoa";
         username ="MC_Fire";
         email = "lavatechbeats@gmail.com";
-        password="adminPass";
         phoneNumber = "734.972.2049";
         activityLog = new ArrayList<>();
         locationHistory = new ArrayList<>();
         devices = new ArrayList<>();
     }
-    public user(String fullName,String username,String email, String password, String phoneNumber){
+    public user(String fullName,String username,String email, String phoneNumber){
         this.fullName = fullName;
         this.username = username;
         this.email = email;
-        this.password = password;
         this.phoneNumber = phoneNumber;
         activityLog = new ArrayList<>();
         locationHistory = new ArrayList<>();
         devices = new ArrayList<>();
     }
-    //User may need to change info
-    public void updateInfo(int choice, String info){
-        switch(choice){
-            case 1:
-                this.username=info;
-                break;
-            case 2:
-                this.email=info;
-                break;
-            case 3:
-                this.password=info;
-                break;
-            case 4:
-                this.phoneNumber=info;
-                break;
-            case 5:
-                this.fullName=info;
-                break;
-            default: Log.w(TAG,"Invalid choice");
-        }
 
-    }
     //activityLog needs a format for the logs it store
     public void updateActivityLog(String date, String summary){
         String logEntry = "Last active on "+date+":\n"+summary+"\n\n";
@@ -84,4 +72,45 @@ public class user {
         locationHistory.add(lastLocation);
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getActivityLog() {
+        String log="";
+        for (String logEntry:activityLog){
+            log +=logEntry;
+        }
+        return log;
+    }
+
+    public String getLocationHistory() {
+        String log="";
+        for (Location logEntry:locationHistory){
+            log +=logEntry.toString();
+        }
+        return log;
+    }
+
+    public String getDevices() {
+        String log="";
+        for(deviceInfo dev:devices){
+            String building=dev.getType()+" "+dev.getId()+dev.hasPermissions();
+            log+=building+"\n";
+        }
+        return log;
+    }
 }

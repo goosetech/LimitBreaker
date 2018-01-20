@@ -76,16 +76,11 @@ public class LoginActivity extends AppCompatActivity{
     public void onStart(){
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
-    }
-
-    //
-    public void updateUI(FirebaseUser user){
-        if(user!=null) {
-            Log.w(TAG, "User account discovered");
-        }
-        else{
-            Log.w(TAG,"User account not found");
+        //If user account is found, move to main activity
+        if(currentUser != null){
+            Log.w(TAG,"User "+currentUser.getEmail()+" found");
+            Intent mainActivity = new Intent (LoginActivity.this,MainActivity.class);
+            startActivity(mainActivity);
         }
     }
     public void buttonClicked(int buttonNumber){
@@ -102,18 +97,16 @@ public class LoginActivity extends AppCompatActivity{
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
-                                    Log.d(TAG, "signInWithEmail:success");
+                                    Log.w(TAG, "signInWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    updateUI(user);
+                                    Intent mainActivity = new Intent(LoginActivity.this,MainActivity.class);
+                                    startActivity(mainActivity);
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(TAG, "signInWithEmail:failure", task.getException());
                                     Toast.makeText(LoginActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
-                                    updateUI(null);
                                 }
-
-                                // ...
                             }
                         });
                 break;
